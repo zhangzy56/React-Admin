@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+import { ConfigProvider } from 'antd'
+import { connect } from 'react-redux'
+// import i18n from 'i18next'
 
-function App() {
-  const [count, setCount] = useState(0)
+// 语言包
+import zhCN from 'antd/lib/locale/zh_CN'
+import enUS from 'antd/lib/locale/en_US'
+
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+
+import { getBrowserLang } from './utils/common'
+import { setLanguage } from '@/store/modules/system/action'
+
+function App(props: any) {
+  const { language, componentSize, themeConfig, setLanguage } = props
+  const [locale, setLocale] = useState(zhCN)
+
+  const browserLang = getBrowserLang()
+
+  const changeLocale = (type: string) => {
+    if (!['zh', 'en'].includes(type)) return
+    if (type === 'zh') setLocale(zhCN)
+    if (type === 'en') setLocale(enUS)
+    dayjs.locale(type)
+  }
+
+  // 设置 antd 语言国际化
+  const setAntdLanguage = () => {
+    // 如果 redux 中有默认语言就设置成 redux 的默认语言，没有默认语言就设置成浏览器默认语言
+    if (language) return changeLocale(language)
+
+    if (browserLang == 'zh') return setLocale(zhCN)
+    if (browserLang == 'en') return setLocale(enUS)
+  }
+
+  useEffect(() => {
+    // 全局使用国际化
+    // i18n.changeLanguage(language || getBrowserLang())
+    setLanguage(language || browserLang)
+    setAntdLanguage()
+  }, [language])
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <ConfigProvider locale={locale} componentSize={componentSize}>
+      <div className="App">哈哈哈</div>
+    </ConfigProvider>
   )
 }
 
-export default App
+const mapStateToProps = (state: Recordable) => state.system
+
+export default connect(mapStateToProps, { setLanguage })(App)

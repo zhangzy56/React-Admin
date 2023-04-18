@@ -1,0 +1,87 @@
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// fade-transform
+// Main组件router-view 切换动画
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.2s;
+}
+
+.fade-transform-enter-from {
+  opacity: 0;
+  transition: all 0.2s;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transition: all 0.2s;
+  transform: translateX(30px);
+}
+
+// 面包屑切换动画
+.breadcrumb-enter-active,
+.breadcrumb-leave-active {
+  transition: all 0.2s ease;
+}
+
+.breadcrumb-enter-from,
+.breadcrumb-leave-active {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.breadcrumb-leave-active {
+  position: absolute;
+  z-index: -1;
+}
+
+.loop(@i) when (@i <= 40) {
+  .mt-@{i} {
+    margin-top: @i + 0px;
+  }
+
+  .mr-@{i} {
+    margin-right: @i + 0px;
+  }
+
+  .mb-@{i} {
+    margin-bottom: @i + 0px;
+  }
+
+  .ml-@{i} {
+    margin-left: @i + 0px;
+  }
+
+  .pt-@{i} {
+    padding-top: @i + 0px;
+  }
+
+  .pr-@{i} {
+    padding-right: @i + 0px;
+  }
+
+  .pb-@{i} {
+    padding-bottom: @i + 0px;
+  }
+
+  .pl-@{i} {
+    padding-left: @i + 0px;
+  }
+
+  .p-@{i} {
+    padding: @i + 0px;
+  }
+
+  .m-@{i} {
+    margin: @i + 0px;
+  }
+
+  .loop(@i + 1);
+}
+
+.loop(1);
