@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ConfigProvider } from 'antd'
 import { connect } from 'react-redux'
+import { HashRouter } from 'react-router-dom'
 // import i18n from 'i18next'
 
 // 语言包
@@ -9,6 +10,12 @@ import enUS from 'antd/lib/locale/en_US'
 
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
+
+// 路由拦截器
+import AuthRouter from '@/router/utils/authRouter'
+
+// 路由配置
+import Router from '@/router'
 
 import { getBrowserLang } from './utils/common'
 import { setLanguage } from '@/store/modules/system/action'
@@ -43,9 +50,14 @@ function App(props: any) {
   }, [language])
 
   return (
-    <ConfigProvider locale={locale} componentSize={componentSize}>
-      <div className="App">哈哈哈</div>
-    </ConfigProvider>
+    <HashRouter>
+      <ConfigProvider locale={locale} componentSize={componentSize}>
+        {/* 路由拦截器 高阶组件 */}
+        <AuthRouter>
+          <Router />
+        </AuthRouter>
+      </ConfigProvider>
+    </HashRouter>
   )
 }
 

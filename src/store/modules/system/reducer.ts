@@ -1,7 +1,7 @@
 import { AnyAction } from 'redux'
 import { produce } from 'immer'
 import * as types from '@/store/mutation-types'
-import { SystemState } from '@/store/type'
+import { SystemState } from '@/store/types'
 
 const systemState: SystemState = {
   token: '',

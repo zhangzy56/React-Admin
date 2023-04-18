@@ -7,9 +7,11 @@ import reduxThunk from 'redux-thunk'
 import reduxPromise from 'redux-promise'
 
 import system from './modules/system/reducer'
+import auth from './modules/auth/reducer'
 
 const reducer = combineReducers({
-  system
+  system,
+  auth
 })
 
 // redux 持久化配置

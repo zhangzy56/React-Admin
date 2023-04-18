@@ -16,3 +16,10 @@ export interface SystemState {
   language: string
   themeConfig: ThemeConfigProp
 }
+
+export interface AuthState {
+  authButtons: {
+    [propName: string]: any
+  }
+  authRouter: string[]
+}
