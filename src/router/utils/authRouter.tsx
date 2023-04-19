@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom'
-import { rootRouter } from '../index'
+import { routes } from '@/router/index'
 import { searchRoute } from './index'
 import { store } from '@/store/index'
 import { HOME_URL } from '@/config/config'
@@ -7,7 +7,7 @@ import { HOME_URL } from '@/config/config'
 const AuthRouter = (props: { children: JSX.Element }) => {
   const { pathname: path } = useLocation()
 
-  const route = searchRoute(path, rootRouter)
+  const route = searchRoute(path, routes)
 
   // 在跳转路由之前，清除所有的请求
   // axiosCanceler.removeAllPending()

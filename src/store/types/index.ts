@@ -23,3 +23,8 @@ export interface AuthState {
   }
   authRouter: string[]
 }
+
+export interface MenuState {
+  isCollapse: boolean
+  menuList: Menu.MenuOptions[]
+}

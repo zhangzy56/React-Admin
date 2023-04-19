@@ -1,20 +1,21 @@
 import { Navigate, useRoutes } from 'react-router-dom'
 import { RouteObject } from './types'
 import Login from '@/views/user/login/index'
+import React from 'react'
 
-// 导入所有router
-const modules = import.meta.glob('./modules/*.tsx')
+// 导入所有router  导入 moduleItem 下的 default 属性, 否则会嵌套一层
+const modules = import.meta.glob('./modules/*.tsx', { eager: true, import: 'default' })
 
 // 处理路由
 export const routeArr: RouteObject[] = []
 
-Object.keys(modules).forEach(item => {
-  // @ts-ignore
-  Object.keys(modules[item]).forEach((key: any) => routeArr.push(...modules[item][key]))
+Object.keys(modules).forEach((key: string) => {
+  const module = modules[key] as Recordable[]
+  routeArr.push(...module)
 })
 
 // 所有路由
-export const rootRouter: RouteObject[] = [
+export const routes: RouteObject[] = [
   {
     path: '/',
     element: <Navigate to="/login" />
@@ -31,12 +32,15 @@ export const rootRouter: RouteObject[] = [
   ...routeArr,
   {
     path: '*',
-    element: <Navigate to="/404" />
+    // element: <Navigate to="/404" />
+    element: <Navigate to="/login" />
   }
 ]
 
+// console.log('routes', routes)
+
 const Router = (): React.ReactElement | null => {
-  return useRoutes(rootRouter as any[])
+  return useRoutes(routes as any[])
 }
 
 export default Router

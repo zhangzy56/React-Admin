@@ -8,10 +8,12 @@ import reduxPromise from 'redux-promise'
 
 import system from './modules/system/reducer'
 import auth from './modules/auth/reducer'
+import menu from './modules/menu/reducer'
 
 const reducer = combineReducers({
   system,
-  auth
+  auth,
+  menu
 })
 
 // redux 持久化配置
