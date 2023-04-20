@@ -1,0 +1,10 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": {
+    "name": "v-admin",
+    "avatar": "xxx",
+    "salary": 4500,
+    "apartment": "IT服务部"
+  }
+}

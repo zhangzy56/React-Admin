@@ -4,7 +4,7 @@ import * as types from '@/store/mutation-types'
 import { SystemState } from '@/store/types'
 
 const systemState: SystemState = {
-  token: '',
+  token: null,
   userInfo: '',
   componentSize: 'middle',
   language: '',

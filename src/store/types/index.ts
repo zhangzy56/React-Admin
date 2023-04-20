@@ -10,7 +10,7 @@ export interface ThemeConfigProp {
 }
 
 export interface SystemState {
-  token: string
+  token: string | null
   userInfo: any
   componentSize: SizeType
   language: string
@@ -27,4 +27,8 @@ export interface AuthState {
 export interface MenuState {
   isCollapse: boolean
   menuList: Menu.MenuOptions[]
+}
+
+export interface BreadcrumbState {
+  breadcrumbList: any[]
 }
