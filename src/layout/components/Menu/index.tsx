@@ -6,7 +6,7 @@ import { Menu } from 'antd'
 import { setMenuList } from '@/store/modules/menu/action'
 import { setBreadcrumbList } from '@/store/modules/breadcrumb/action'
 import { setAuthRouter } from '@/store/modules/auth/action'
-import { flattenRouteList, getOpenKeys, searchRoute } from '@/router/utils'
+import { findAllBreadcrumb, flattenRouteList, getOpenKeys, searchRoute } from '@/router/utils'
 import { getMenuListApi } from '@/api/modules/user'
 import { MenuItem, deepLoopFloat } from './utils'
 
@@ -37,7 +37,7 @@ const SiderMenu = (props: any) => {
     setMenuList(deepLoopFloat(data))
 
     // 存储处理过后的所有面包屑导航栏到 redux 中
-    // setBreadcrumbList(findAllBreadcrumb(data))
+    setBreadcrumbList(findAllBreadcrumb(data))
 
     // 把路由菜单处理成一维数组，存储到 redux 中，做菜单权限判断
     const dynamicRouter = flattenRouteList(data)

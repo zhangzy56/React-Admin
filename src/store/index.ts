@@ -9,11 +9,13 @@ import reduxPromise from 'redux-promise'
 import system from './modules/system/reducer'
 import auth from './modules/auth/reducer'
 import menu from './modules/menu/reducer'
+import breadcrumb from './modules/breadcrumb/reducer'
 
 const reducer = combineReducers({
   system,
   auth,
-  menu
+  menu,
+  breadcrumb
 })
 
 // redux 持久化配置

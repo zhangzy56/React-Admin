@@ -52,7 +52,6 @@ function App(props: any) {
   return (
     <HashRouter>
       <ConfigProvider locale={locale} componentSize={componentSize}>
-        {/* 路由拦截器 高阶组件 */}
         <AuthRouter>
           <Router />
         </AuthRouter>

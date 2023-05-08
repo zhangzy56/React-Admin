@@ -1,5 +1,5 @@
 const Tabs = () => {
-  return <div>Tabs</div>
+  return <div className="tabs-box">Tabs</div>
 }
 
 export default Tabs

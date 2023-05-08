@@ -15,9 +15,16 @@ const formRouter: Array<RouteObject> = [
         path: 'basicForm',
         element: lazyLoad(lazy(() => import('@/views/form/basicForm/index'))),
         meta: {
-          requiresAuth: true,
           title: '基础 Form',
           key: 'basicForm'
+        }
+      },
+      {
+        path: 'validateForm',
+        element: lazyLoad(lazy(() => import('@/views/form/validateForm/index'))),
+        meta: {
+          title: '基础 Form',
+          key: 'validateForm'
         }
       }
     ]

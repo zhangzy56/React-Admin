@@ -32,8 +32,7 @@ export const routes: RouteObject[] = [
   ...routeArr,
   {
     path: '*',
-    // element: <Navigate to="/404" />
-    element: <Navigate to="/login" />
+    element: <Navigate to="/404" />
   }
 ]
 
